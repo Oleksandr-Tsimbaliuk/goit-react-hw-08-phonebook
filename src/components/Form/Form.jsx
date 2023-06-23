@@ -54,7 +54,7 @@ export default function Form({ title }) {
   };
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit} autoComplete="off">
       <h2>{title}</h2>
       <label className="form-label">
         <span>Name</span>
