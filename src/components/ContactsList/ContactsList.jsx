@@ -2,13 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Contact from 'components/Contact/Contact';
 import { StyledContactsList, StyledContactsTitle } from './ContactsList.styled';
+import { useSelector } from 'react-redux';
+import { selectFilter } from 'redux/selectors';
 
 function ContactsList({ title, contacts, deleteContact }) {
+  const filter = useSelector(selectFilter);
+  const contactsFilter = () => {
+    return contacts.filter(({ name }) =>
+      name?.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+  const filteredContacts = contactsFilter();
+
   return (
     <>
       <StyledContactsTitle>{title}</StyledContactsTitle>
       <StyledContactsList>
-        {contacts.map(({ name, id, phone }) => {
+        {filteredContacts.map(({ name, id, phone }) => {
           return (
             <Contact
               key={id}

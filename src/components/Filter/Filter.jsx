@@ -1,11 +1,18 @@
 import React from 'react';
 import { StyledFilterBox, StyledFilterTitle } from './Filter.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFilter } from 'redux/contactSlice';
+import { selectFilter } from 'redux/selectors';
 
-function Filter({ filter, changeFilter }) {
+function Filter() {
+  const filter = useSelector(selectFilter);
+  const dispatch = useDispatch();
+  const handleFilter = event => dispatch(setFilter(event.currentTarget.value));
+
   return (
     <StyledFilterBox>
       <StyledFilterTitle>Find contacts by name</StyledFilterTitle>
-      <input value={filter} type="text" required onChange={changeFilter} />
+      <input value={filter} type="text" required onChange={handleFilter} />
     </StyledFilterBox>
   );
 }

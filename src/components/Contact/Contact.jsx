@@ -10,7 +10,6 @@ function Contact({ name, id, phone }) {
     dispatch(deleteContactThunk(contactId));
   };
 
-  
   return (
     <li key={id}>
       <p>
