@@ -22,20 +22,20 @@ export default function RegisterForm() {
   return (
     <div>
       <form onSubmit={handleSumbit}>
-        <h2>form</h2>
+        <h2>Registration</h2>
 
         <label className="">
-          <span> Username</span>
+          <span> Username:</span>
           <input type="text" name="name" />
         </label>
 
         <label className="">
-          <span>Email</span>
+          <span>Email:</span>
           <input type="text" name="email" />
         </label>
 
         <label className="">
-          <span>Password</span>
+          <span>Password:</span>
           <input type="text" name="password" />
         </label>
 
