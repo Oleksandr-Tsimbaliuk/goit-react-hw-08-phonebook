@@ -11,6 +11,8 @@ import { Route, Routes } from 'react-router-dom';
 // import Loader from './Loader/Loader';
 import Layout from './Layout/Layout';
 import Home from 'pages/Home';
+import RegistrationPage from 'pages/RegistrationPage';
+import LoginPage from 'pages/LoginPage';
 
 export default function App() {
   // const dispatch = useDispatch();
@@ -26,6 +28,8 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Layout>
 
