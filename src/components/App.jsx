@@ -30,6 +30,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/login" element={<LoginPage />} />
+        {/* <Route path="/contacts" element={} /> */}
       </Routes>
     </Layout>
 
