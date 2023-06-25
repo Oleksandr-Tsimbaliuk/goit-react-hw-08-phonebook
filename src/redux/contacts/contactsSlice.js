@@ -4,6 +4,16 @@ import {
   deleteContactThunk,
   fetchContacts,
 } from './contactsOperations';
+import { logOut } from 'redux/auth/authOperations';
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -16,49 +26,48 @@ const contactsSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, state => {
-        state.isLoading = true;
-      })
+      .addCase(fetchContacts.pending, state => handlePending(state))
+      .addCase(deleteContactThunk.pending, state => handlePending(state))
+      .addCase(addContactThunk.pending, state => handlePending(state))
+      .addCase(fetchContacts.rejected, (state, action) =>
+        handleRejected(state, action)
+      )
+      .addCase(addContactThunk.rejected, (state, action) =>
+        handleRejected(state, action)
+      )
+      .addCase(deleteContactThunk.rejected, (state, action) =>
+        handleRejected(state, action)
+      )
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.contacts = action.payload;
-      })
-      .addCase(fetchContacts.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(addContactThunk.pending, state => {
-        state.isLoading = true;
       })
       .addCase(addContactThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.contacts = [...state.contacts, action.payload];
         // state.contacts.push(action.payload);
-        // return {...state, contacts: [...state.contacts, ...action.payload]};
       })
-      .addCase(addContactThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-      .addCase(deleteContactThunk.pending, state => {
-        state.isLoading = true;
-      })
+
       .addCase(deleteContactThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.contacts = state.contacts.filter(
           contact => contact.id !== action.payload.id
         );
+        // const index = state.items.findIndex(
+        //   task => task.id === action.payload.id
+        // );
+        // state.items.splice(index, 1);
       })
-      .addCase(deleteContactThunk.rejected, (state, action) => {
+      .addCase(logOut.fulfilled, state => {
+        state.items = [];
+        state.error = null;
         state.isLoading = false;
-        state.error = action.payload;
       });
   },
 
-  // Объект редюсеров
   reducers: {
     setFilter(state, action) {
       state.filter = action.payload.toLowerCase();
@@ -66,19 +75,5 @@ const contactsSlice = createSlice({
   },
 });
 
-// Генераторы экшенов(instructions)
-// export const { addContact, deleteContact, setFilter } = contactsSlice.actions;
 export const { setFilter } = contactsSlice.actions;
-
-// Редюсер слайса
 export const contactsReducer = contactsSlice.reducer;
-
-/* 
- reducer - это функция, которая принимает стейт и action(объект инструкцию) и изменяет состояние. 
-    addContact(state, action) {
-        state.contacts = [...state.contacts, action.payload]
-    }
- action - объект instruction, который имеет два поля, тип и пейлоад, при этом, тип обязательный
-    { type: "contacts/addContacts" , payload }
-
-*/
