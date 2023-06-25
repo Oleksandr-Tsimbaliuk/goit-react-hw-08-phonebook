@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Contact from 'components/Contact/Contact';
 import { StyledContactsList, StyledContactsTitle } from './ContactsList.styled';
 import { useSelector } from 'react-redux';
-import { selectFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/contacts/contactsSelectors';
 
 function ContactsList({ title, contacts, deleteContact }) {
   const filter = useSelector(selectFilter);

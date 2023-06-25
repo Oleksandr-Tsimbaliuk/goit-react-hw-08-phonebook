@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { StyledForm } from './Form.styled';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContactThunk } from 'redux/operations';
 import PropTypes from 'prop-types';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { addContactThunk } from 'redux/contacts/contactsOperations';
 
 export default function Form({ title }) {
   const [name, setName] = useState('');
