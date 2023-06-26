@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { logIn } from 'redux/auth/authOperations';
 
 export default function LoginForm() {
@@ -68,6 +69,8 @@ export default function LoginForm() {
           Log in
         </button>
       </form>
+      {/* <p>Are you not registered yet?</p>
+      <NavLink to="/register">Registration</NavLink> */}
     </div>
   );
 }
