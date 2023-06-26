@@ -4,9 +4,9 @@ import axios from 'axios';
 // axios.defaults.baseURL = 'https://64877635beba62972790b08e.mockapi.io/api';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
+// const setAuthHeader = token => {
+//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+// };
 
 // GET @ /tasks
 export const fetchContacts = createAsyncThunk(
