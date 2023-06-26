@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { StyledForm } from './Form.styled';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { addContactThunk } from 'redux/contacts/contactsOperations';
+import { Notify } from 'notiflix';
 
 export default function Form({ title }) {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
@@ -17,8 +17,8 @@ export default function Form({ title }) {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
-    } else if (name === 'phone') {
-      setPhone(value);
+    } else if (name === 'number') {
+      setNumber(value);
     }
   };
   const handleSubmit = event => {
@@ -26,8 +26,7 @@ export default function Form({ title }) {
 
     const contactData = {
       name: name,
-      phone: phone,
-      id: nanoid(),
+      number: number,
     };
     const loveredContactData = contactData.name.toLowerCase();
     const isContactExist = contacts.some(
@@ -35,7 +34,7 @@ export default function Form({ title }) {
     );
     const resetInputForm = () => {
       setName('');
-      setPhone('');
+      setNumber('');
     };
 
     if (isContactExist) {
@@ -43,11 +42,8 @@ export default function Form({ title }) {
       return;
     }
 
-    dispatch(
-      addContactThunk(contactData)
-      //   {type: "contacts/addContact", payload: contactData}
-    );
-    alert(
+    dispatch(addContactThunk(contactData));
+    Notify.success(
       `Contact whith name ${contactData.name} successfully added to phonebook!`
     );
     resetInputForm();
@@ -74,12 +70,11 @@ export default function Form({ title }) {
         <span>Number</span>
         <input
           type="tel"
-          name="phone"
+          name="number"
           id="ContactNumber"
-          pattern="\+?\d{1,4}[-.\s]?\(?\d{1,3}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          title="number number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
-          value={phone}
+          value={number}
           onChange={handleChange}
         />
       </label>

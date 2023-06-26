@@ -4,13 +4,16 @@ import axios from 'axios';
 // axios.defaults.baseURL = 'https://64877635beba62972790b08e.mockapi.io/api';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
 // GET @ /tasks
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      // const response = await axios.get('/contact');
-      const { data } = await axios.get('/tasks');
+      const { data } = await axios.get('/contacts');
       console.log(data);
       return data;
     } catch (err) {
@@ -23,10 +26,13 @@ export const fetchContacts = createAsyncThunk(
 export const addContactThunk = createAsyncThunk(
   'contacts/addContact',
   // async (contact, thunkAPI) => {
-  async (text, thunkAPI) => {
+  async (contact, thunkAPI) => {
     try {
-      // const response = await axios.post('/tasks', contact);
-      const { data } = await axios.post('/tasks', { text });
+      // const state = thunkAPI.getState();
+      // const persistedToken = state.auth.token;
+      // setAuthHeader(persistedToken);
+
+      const { data } = await axios.post('/contacts', contact);
       console.log(data);
       return data;
     } catch (err) {
@@ -36,13 +42,11 @@ export const addContactThunk = createAsyncThunk(
 );
 
 // DELETE @ /tasks/:id
-
 export const deleteContactThunk = createAsyncThunk(
   'contacts/deleteContact',
   async (contactId, thunkAPI) => {
     try {
-      // const response = await axios.delete(`/contact/${contactId}`);
-      const { data } = await axios.delete(`/tasks/${contactId}`);
+      const { data } = await axios.delete(`/contacts/${contactId}`);
       console.log(data);
       return data;
     } catch (err) {

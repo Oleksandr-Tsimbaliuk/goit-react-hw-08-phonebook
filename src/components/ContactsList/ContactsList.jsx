@@ -18,13 +18,13 @@ function ContactsList({ title, contacts, deleteContact }) {
     <>
       <StyledContactsTitle>{title}</StyledContactsTitle>
       <StyledContactsList>
-        {filteredContacts.map(({ name, id, phone }) => {
+        {filteredContacts.map(({ name, id, number }) => {
           return (
             <Contact
               key={id}
               name={name}
               id={id}
-              phone={phone}
+              phone={number}
               deleteContact={deleteContact}
             ></Contact>
           );

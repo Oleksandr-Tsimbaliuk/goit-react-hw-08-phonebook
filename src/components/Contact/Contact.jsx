@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContactThunk } from 'redux/contacts/contactsOperations';
+import { Notify } from 'notiflix';
 
 function Contact({ name, id, phone }) {
   const dispatch = useDispatch();
 
   const deleteContact = contactId => {
     dispatch(deleteContactThunk(contactId));
+    Notify.success(
+      `Contact whith name ${name} successfully added to phonebook!`
+    );
   };
 
   return (
