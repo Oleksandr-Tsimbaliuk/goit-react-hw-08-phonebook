@@ -31,10 +31,6 @@ export default function Contacts() {
       ) : (
         <p>"Your phonebook is empty"</p>
       )}
-      {/* {contacts.length > 0 && !isLoading && (
-        <ContactsList contacts={contacts} title="Contacts"></ContactsList>
-      )} */}
-
       {isLoading && !error && <Loader />}
       {error && <p>Error: {error}</p>}
     </>
