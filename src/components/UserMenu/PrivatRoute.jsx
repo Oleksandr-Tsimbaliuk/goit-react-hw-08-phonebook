@@ -3,23 +3,20 @@ import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { getIsLoggedIn, getisRefreshing } from 'redux/auth/authSelectors';
 
-// export default function PrivatRoute({
-//   component: Component,
-//   redirectTo = '/',
-// }) {
+const PrivatRoute = ({ component: Component, redirectTo = '/' }) => {
+  const IsLoggedIn = useSelector(getIsLoggedIn);
+  const isRefreshing = useSelector(getisRefreshing);
+  return !IsLoggedIn & !isRefreshing ? (
+    <Navigate to={redirectTo} />
+  ) : (
+    <Component />
+  );
+};
+
+// export default function PrivatRoute({ children, redirectTo = '/' }) {
 //   const IsLoggedIn = useSelector(getIsLoggedIn);
 //   const isRefreshing = useSelector(getisRefreshing);
-//   return !IsLoggedIn & !isRefreshing ? (
-//     <Navigate to={redirectTo} />
-//   ) : (
-//     <Component />
-//   );
+//   return !IsLoggedIn & !isRefreshing ? <Navigate to={redirectTo} /> : children;
 // }
-
-const PrivatRoute = children => {
-  const IsLoggedIn = useSelector(getIsLoggedIn);
-
-  return IsLoggedIn ? children : <Navigate to="login/" />;
-};
 
 export default PrivatRoute;

@@ -10,9 +10,7 @@ export default function UserMenu() {
 
   function pressLogOut() {
     dispatch(logOut());
-    Notify.success(
-      `Contact whith name ${userName} successfully added to phonebook!`
-    );
+    Notify.success(`User ${userName} successfully logged out`);
   }
 
   return (

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/authOperations';
 import Loader from './Loader/Loader';
 import PrivatRoute from './UserMenu/PrivatRoute';
+import PublicRoute from './UserMenu/PublicRoute';
 
 const Home = lazy(() => import('pages/Home'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
@@ -23,11 +24,49 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/registration" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* <Route
+            path="/registration"
+            element={
+              <PublicRoute
+                component={RegistrationPage}
+                redirectTo="/Contacts"
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute component={LoginPage} redirectTo="/Contacts" />
+            }
+          />
           <Route
             path="/contacts"
-            element={<PrivatRoute component={Contacts} redirectTo="/login" />}
+            element={<PrivatRoute component={Contacts} redirectTo="/login"/>}
+          />
+        </Routes> */}
+          <Route
+            path="/registration"
+            element={
+              <PublicRoute>
+                <RegistrationPage redirectTo="/Contacts" />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage redirectTo="/Contacts" />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivatRoute>
+                <Contacts redirectTo="/login" />
+              </PrivatRoute>
+            }
           />
         </Routes>
       </Suspense>
