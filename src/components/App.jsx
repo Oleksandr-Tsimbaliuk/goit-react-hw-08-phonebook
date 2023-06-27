@@ -7,7 +7,7 @@ import Loader from './Loader/Loader';
 import PrivatRoute from './UserMenu/PrivatRoute';
 import PublicRoute from './UserMenu/PublicRoute';
 
-const Home = lazy(() => import('pages/Home'));
+const Home = lazy(() => import('pages/Home/Home'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const Contacts = lazy(() => import('pages/Contacts'));
@@ -24,7 +24,7 @@ export default function App() {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route
+          <Route
             path="/registration"
             element={
               <PublicRoute
@@ -41,14 +41,14 @@ export default function App() {
           />
           <Route
             path="/contacts"
-            element={<PrivatRoute component={Contacts} redirectTo="/login"/>}
+            element={<PrivatRoute component={Contacts} redirectTo="/login" />}
           />
-        </Routes> */}
-          <Route
+
+          {/* <Route
             path="/registration"
             element={
               <PublicRoute>
-                <RegistrationPage redirectTo="/Contacts" />
+                <RegistrationPage />
               </PublicRoute>
             }
           />
@@ -56,7 +56,7 @@ export default function App() {
             path="/login"
             element={
               <PublicRoute>
-                <LoginPage redirectTo="/Contacts" />
+                <LoginPage />
               </PublicRoute>
             }
           />
@@ -64,10 +64,10 @@ export default function App() {
             path="/contacts"
             element={
               <PrivatRoute>
-                <Contacts redirectTo="/login" />
+                <Contacts />
               </PrivatRoute>
             }
-          />
+          /> */}
         </Routes>
       </Suspense>
     </Layout>
