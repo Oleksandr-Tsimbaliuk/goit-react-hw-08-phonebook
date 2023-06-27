@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeStyled = styled.p`
+export const HomeStyled = styled.div`
   display: flex;
   position: absolute;
   top: 50%;
