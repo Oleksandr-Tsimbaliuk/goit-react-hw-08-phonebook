@@ -11,8 +11,6 @@ export const StyledContactsList = styled.ul`
   width: 100%;
   margin: 20px auto 25px;
   gap: 16px;
-  border: 1px solid;
-  border-radius: 15px;
 
   list-style: none;
 `;

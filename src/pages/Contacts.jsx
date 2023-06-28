@@ -29,7 +29,7 @@ export default function Contacts() {
       {contacts.length > 0 ? (
         <ContactsList contacts={contacts} title="Contacts"></ContactsList>
       ) : (
-        <p>"Your phonebook is empty"</p>
+        <p>Your phone book is empty</p>
       )}
       {isLoading && !error && <Loader />}
       {error && <p>Error: {error}</p>}
