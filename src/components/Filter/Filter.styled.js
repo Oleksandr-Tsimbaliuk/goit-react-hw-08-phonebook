@@ -10,6 +10,4 @@ export const StyledFilterBox = styled.div`
   max-width: 350px;
   margin: 20px auto 25px;
   gap: 16px;
-  border: 1px solid;
-  border-radius: 15px;
 `;

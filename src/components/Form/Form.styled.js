@@ -8,8 +8,6 @@ export const StyledForm = styled.form`
   width: 100%;
   margin: 20px auto 25px;
   gap: 16px;
-  border: 1px solid;
-  border-radius: 15px;
 
   .form-label {
     display: flex;
