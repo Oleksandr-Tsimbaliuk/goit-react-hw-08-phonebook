@@ -3,18 +3,13 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
-// Utility to add JWT
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Utility to remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
-
-// POST @ /users/signup
-// body: { name, email, password }
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -29,9 +24,6 @@ export const register = createAsyncThunk(
     }
   }
 );
-
-// POST @ /users/login
-//  body: { email, password }
 
 export const logIn = createAsyncThunk(
   'auth/login',

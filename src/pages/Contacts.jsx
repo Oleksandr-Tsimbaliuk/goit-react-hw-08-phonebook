@@ -5,6 +5,7 @@ import Loader from 'components/Loader/Loader';
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getIsLoggedIn } from 'redux/auth/authSelectors';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 import {
   selectContacts,
@@ -17,10 +18,13 @@ export default function Contacts() {
   const contacts = useSelector(selectContacts);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
+  const IsLoggedIn = useSelector(getIsLoggedIn);
 
   useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+    if (IsLoggedIn) {
+      dispatch(fetchContacts());
+    }
+  }, [dispatch, IsLoggedIn]);
 
   return (
     <>
