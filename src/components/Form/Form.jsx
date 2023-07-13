@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { addContactThunk } from 'redux/contacts/contactsOperations';
 import { Notify } from 'notiflix';
+// import { current } from '@reduxjs/toolkit';
 
 export default function Form({ title }) {
   const [name, setName] = useState('');
@@ -13,8 +14,7 @@ export default function Form({ title }) {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handleChange = event => {
-    const { name, value } = event.target;
+  const handleChange = ({ currentTarget: { name, value } }) => {
     if (name === 'name') {
       setName(value);
     } else if (name === 'number') {
