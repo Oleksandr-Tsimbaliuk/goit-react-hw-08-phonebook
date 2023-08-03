@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyledForm } from './Form.styled';
+import { StyledForm } from './Styled';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectContacts } from 'redux/contacts/contactsSelectors';

@@ -5,12 +5,19 @@ export const StyledContactsTitle = styled.h2`
 `;
 
 export const StyledContactsList = styled.ul`
+  margin: 20px auto 25px;
+
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+
   max-width: 350px;
   width: 100%;
-  margin: 20px auto 25px;
-  gap: 16px;
+
+  /* border: 1px solid;
+  border-radius: 15px; */
 
   list-style: none;
 `;

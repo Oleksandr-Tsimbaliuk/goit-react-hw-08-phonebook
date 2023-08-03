@@ -1,6 +1,6 @@
 import ContactsList from 'components/ContactsList/ContactsList';
 import Filter from 'components/Filter/Filter';
-import Form from 'components/Form/Form';
+import Form from 'components/ContactsForm/ContactsForm';
 import Loader from 'components/Loader/Loader';
 import React from 'react';
 import { useEffect } from 'react';

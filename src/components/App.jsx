@@ -10,7 +10,7 @@ import PublicRoute from './UserMenu/PublicRoute';
 const Home = lazy(() => import('pages/Home/Home'));
 const RegistrationPage = lazy(() => import('pages/RegistrationPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
-const Contacts = lazy(() => import('pages/Contacts'));
+const Contacts = lazy(() => import('pages/Contacts/Contacts'));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ export default function App() {
             path="/contacts"
             element={<PrivatRoute component={Contacts} redirectTo="/login" />}
           />
-Ф        </Routes>
+        </Routes>
       </Suspense>
     </Layout>
   );

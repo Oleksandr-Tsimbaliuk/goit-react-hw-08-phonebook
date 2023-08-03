@@ -5,13 +5,16 @@ import UserMenu from 'components/UserMenu/UserMenu';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getIsLoggedIn } from 'redux/auth/authSelectors';
+import { StyledLayout } from './Styled';
 
 function Layout({ children }) {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <>
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      <StyledLayout>
+        <Navigation />
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+      </StyledLayout>
       {children}
     </>
   );
