@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeStyled } from './Styled';
+import { HomeStyled } from './StyledHome.js';
 
 export default function Home() {
   return (
