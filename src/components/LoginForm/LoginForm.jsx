@@ -45,12 +45,12 @@ export default function LoginForm() {
     <StyledLoginForm onSubmit={handleSumbit}>
       <h2>Login</h2>
 
-      <label className="">
+      <label className="form-label">
         <span>Email:</span>
         <input type="text" name="email" value={email} onChange={handleChange} />
       </label>
 
-      <label className="">
+      <label className="form-label">
         <span>Password:</span>
         <input
           type="text"
@@ -60,7 +60,7 @@ export default function LoginForm() {
         />
       </label>
 
-      <button className="" type="submit">
+      <button className="form-btn" type="submit">
         Log in
       </button>
       <NavLink to="/registration">Sign Up</NavLink>

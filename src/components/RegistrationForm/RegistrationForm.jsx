@@ -49,17 +49,17 @@ export default function RegisterForm() {
     <StyledRegistrationForm onSubmit={handleSumbit}>
       <h2>Registration</h2>
 
-      <label className="">
+      <label className="form-label">
         <span> Username:</span>
         <input type="text" name="name" value={name} onChange={handleChange} />
       </label>
 
-      <label className="">
+      <label className="form-label">
         <span>Email:</span>
         <input type="text" name="email" value={email} onChange={handleChange} />
       </label>
 
-      <label className="">
+      <label className="form-label">
         <span>Password:</span>
         <input
           type="text"
@@ -69,7 +69,7 @@ export default function RegisterForm() {
         />
       </label>
 
-      <button className="" type="submit">
+      <button className="form-btn" type="submit">
         Sign up
       </button>
     </StyledRegistrationForm>
